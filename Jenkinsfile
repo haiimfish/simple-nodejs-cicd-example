@@ -1,7 +1,7 @@
 pipeline {
   environment {
-    VERCEL_PROJECT_NAME = 'simple-nodejs-cicd-example'
-    VERCEL_TOKEN = credentials('DevOps21-vecel-token') // ดึงจาก Jenkins
+    VERCEL_PROJECT_NAME = 'DevOps21-simple-node'
+    VERCEL_TOKEN = credentials('TlIoQS4in4HZunFM9nTtkkA2') // ดึงจาก Jenkins
   }
   agent {
     kubernetes {
@@ -29,11 +29,13 @@ pipeline {
       }
     }
     stage('Build') {
-    container('my-builder') {
-        sh 'npm ci'
-        sh 'npx npm run build' // หรือ sh './node_modules/.bin/webpack'
+      steps {
+        container('my-builder') {
+          sh 'npm ci'
+          sh 'npm run build'
+        }
+      }
     }
-}
     stage('Test Build') {
       steps {
         container('my-builder') {
