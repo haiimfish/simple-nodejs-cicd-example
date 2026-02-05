@@ -29,13 +29,11 @@ pipeline {
       }
     }
     stage('Build') {
-      steps {
-        container('my-builder') {
-          sh 'npm ci'
-          sh 'npm run build'
-        }
-      }
+    container('my-builder') {
+        sh 'npm ci'
+        sh 'npx npm run build' // หรือ sh './node_modules/.bin/webpack'
     }
+}
     stage('Test Build') {
       steps {
         container('my-builder') {
