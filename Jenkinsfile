@@ -1,7 +1,7 @@
 pipeline {
   environment {
     VERCEL_PROJECT_NAME = 'DevOps21-simple-node'
-    VERCEL_TOKEN = credentials('TlIoQS4in4HZunFM9nTtkkA2') // ดึงจาก Jenkins
+    VERCEL_TOKEN = credentials('vecel-token') // ดึงจาก Jenkins
   }
   agent {
     kubernetes {
